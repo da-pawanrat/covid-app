@@ -19,13 +19,16 @@
   
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="index">COVID-19</a>
+      <a class="navbar-brand" href="/">COVID-19</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-link active" href="#">Country <span class="sr-only">(current)</span></a>
+        </div>
+        <div class="navbar-nav">
+          <a class="nav-link active" href="/world">World <span class="sr-only">(current)</span></a>
         </div>
       </div>
       <form class="form-inline">
@@ -35,11 +38,26 @@
     </nav>
     
     <div class="container">
-      <div class="row">
-        <div class="col-9">
-
+      <div class="row" style="text-align: center;">
+        <% resultData.forEach(function(data){ %>          
+        <div class="col-4">
+          <div style="background-color: aquamarine; border-radius: 15px; height: 120px; margin-top: 25px;">
+            <p style="text-align: center; font-size: 25px;">Comfirmed</p>
+            <p style="text-align: center; font-size: 40px;"><%=data.date_conf%></p>
+            </div>
         </div>
-        <div class="col-3"></div>
+        <div class="col-4">
+          <div style="background-color: plum; border-radius: 15px; height: 120px; margin-top: 25px;">
+            <p style="text-align: center; font-size: 25px;">Recovered</p>
+            <p style="text-align: center; font-size: 40px;"><%=data.date_recover%></p>
+        </div>
+        </div>
+        <div class="col-4">
+          <div style="background-color: yellow; border-radius: 15px; height: 120px; margin-top: 25px;">
+          <p style="text-align: center; font-size: 25px;">Death</p>
+          <p style="text-align: center; font-size: 40px;"><%=data.date_death%></p>
+      </div>
+    </div><% }); %>
       </div>
       <div class="row">       
         
@@ -55,7 +73,7 @@
                           </tr>
                       </thead>
                       <tbody>
-                          <% resultData.forEach(function(data){ %>
+                          <% totalData.forEach(function(data){ %>
                               <tr>
                                   <td>
                                       <%= data.country %>
